@@ -1,0 +1,28 @@
+{
+  "name": "the-market-place",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Production-ready multivendor e-commerce marketplace with AI features.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace @marketplace/api\" \"npm run dev --workspace @marketplace/web\"",
+    "dev:api": "npm run dev --workspace @marketplace/api",
+    "dev:web": "npm run dev --workspace @marketplace/web",
+    "build": "npm run build --workspace @marketplace/api && npm run build --workspace @marketplace/web",
+    "lint": "npm run lint --workspace @marketplace/api && npm run lint --workspace @marketplace/web",
+    "test": "npm run test --workspace @marketplace/api",
+    "seed": "npm run seed --workspace @marketplace/api",
+    "docker:up": "docker compose up --build",
+    "docker:down": "docker compose down -v"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "engines": {
+    "node": ">=20.11.0",
+    "npm": ">=10.0.0"
+  }
+}

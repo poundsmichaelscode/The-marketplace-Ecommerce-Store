@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { requireAuth, requireRole } from '../middleware/auth.js';
+import { checkout, myOrders, allOrders, updateOrderStatus, invoice, receipt } from '../controllers/order.controller.js';
+const router = Router();
+router.post('/checkout', requireAuth, checkout);
+router.get('/mine', requireAuth, myOrders);
+router.get('/', requireAuth, requireRole('admin'), allOrders);
+router.patch('/:id/status', requireAuth, requireRole('vendor','admin'), updateOrderStatus);
+router.get('/:id/invoice', requireAuth, invoice);
+router.get('/:id/receipt', requireAuth, receipt);
+export default router;

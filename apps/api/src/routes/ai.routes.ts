@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { requireAuth, requireRole } from '../middleware/auth.js';
+import { aiChat, aiFraud, aiProductDescription, aiReviewSummary, aiSearch } from '../controllers/ai.controller.js';
+const router = Router();
+router.post('/chat', requireAuth, aiChat);
+router.get('/search', aiSearch);
+router.post('/product-description', requireAuth, requireRole('vendor','admin'), aiProductDescription);
+router.get('/reviews/:productId/summary', aiReviewSummary);
+router.post('/fraud-score', requireAuth, requireRole('admin'), aiFraud);
+export default router;

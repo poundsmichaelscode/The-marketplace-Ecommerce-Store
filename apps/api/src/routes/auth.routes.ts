@@ -1,0 +1,14 @@
+import { Router } from 'express';
+import { register, login, me, forgotPassword, resetPassword, verifyEmail } from '../controllers/auth.controller.js';
+import { validate } from '../middleware/validate.js';
+import { registerSchema, loginSchema } from '../validators/auth.validator.js';
+import { requireAuth } from '../middleware/auth.js';
+import { authLimiter } from '../middleware/security.js';
+const router = Router();
+router.post('/register', authLimiter, validate(registerSchema), register);
+router.post('/login', authLimiter, validate(loginSchema), login);
+router.get('/me', requireAuth, me);
+router.post('/forgot-password', authLimiter, forgotPassword);
+router.post('/reset-password', authLimiter, resetPassword);
+router.post('/verify-email', verifyEmail);
+export default router;
