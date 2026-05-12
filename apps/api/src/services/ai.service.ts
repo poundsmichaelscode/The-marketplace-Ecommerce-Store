@@ -20,8 +20,7 @@ export async function semanticSearch(query: string) {
 }
 export async function summarizeReviews(productId: string) {
   const reviews = await Review.find({ product: productId }).limit(50);
-  const text = reviews.map(r=>`${r.rating}/5 ${r.comment}`).join('
-');
+  const text = reviews.map((r) => `${r.rating}/5 ${r.comment}`).join("\n");
   if (!openai) return { summary: text ? 'Customers mention product quality, delivery experience, and price-value balance.' : 'No reviews yet.' };
   const res = await openai.chat.completions.create({ model:'gpt-4o-mini', messages:[{role:'user', content:`Summarize these reviews in 5 bullet points:
 ${text}`}], temperature:0.2 });
