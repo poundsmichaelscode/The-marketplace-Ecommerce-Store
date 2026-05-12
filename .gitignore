@@ -31,3 +31,11 @@ coverage/
 mongo-data/
 redis-data/
 docker-data/
+
+# Next.js build output
+.next/
+apps/web/.next/
+out/
+apps/web/out/
+.vercel/
+.turbo/
