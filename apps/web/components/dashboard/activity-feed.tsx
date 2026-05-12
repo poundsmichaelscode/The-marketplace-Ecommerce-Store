@@ -1,0 +1,3 @@
+import { BellRing } from "lucide-react";
+import { GlassCard } from "@/components/ui/glass-card";
+export function ActivityFeed() { const items=["New order from Amara","Vendor verification approved","AI flagged unusual order velocity","Payment settled successfully"]; return <GlassCard><h3 className="mb-5 text-xl font-black text-marketDark">Live activity</h3><div className="grid gap-3">{items.map(i=><div key={i} className="flex items-center gap-3 rounded-2xl bg-white p-3"><BellRing className="h-4 w-4 text-marketCream"/><span className="text-sm font-semibold text-marketDark/70">{i}</span></div>)}</div></GlassCard>; }

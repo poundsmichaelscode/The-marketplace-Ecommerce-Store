@@ -1,7 +1,3 @@
-'use client';
-import { useState } from 'react';
-import { api } from '@/lib/api';
-import { Button } from '@/components/ui/button';
-import { Card, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-export default function AIAssistant(){ const [message,setMessage]=useState('What phone should I buy under 300k?'); const [reply,setReply]=useState(''); async function ask(){ const data:any=await api('/ai/chat',{method:'POST',body:JSON.stringify({message})}); setReply(data.reply); } return <main className="mx-auto max-w-3xl px-4 py-10"><Card><CardTitle>AI Shopping Assistant</CardTitle><p className="mt-2 text-muted-foreground">Ask about budget, lifestyle, product comparison, and vendor trust.</p><div className="mt-6 flex gap-3"><Input value={message} onChange={e=>setMessage(e.target.value)}/><Button onClick={ask}>Ask</Button></div>{reply&&<div className="mt-6 rounded-2xl bg-muted p-4 whitespace-pre-wrap">{reply}</div>}</Card></main> }
+import { Bot, Sparkles } from "lucide-react";
+import { AIChatPanel } from "@/components/ai/ai-chat-panel";
+export default function AIAssistantPage(){ return <main className="premium-container py-10"><div className="grid gap-8 lg:grid-cols-[1fr_450px] lg:items-center"><section className="rounded-[2.5rem] bg-market-gradient p-8 text-white shadow-premium lg:p-12"><p className="flex items-center gap-2 text-sm font-black uppercase tracking-[.25em] text-marketCream"><Sparkles className="h-4 w-4"/> AI shopping</p><h1 className="mt-4 text-5xl font-black">Ask what to buy. Get smarter recommendations.</h1><p className="mt-5 max-w-2xl text-white/70">Use budget, lifestyle, interests, previous purchases, and product intent to discover the right items faster.</p><div className="mt-10 grid gap-4 sm:grid-cols-2">{['Budget picks','Review summaries','Semantic search','Vendor support'].map(x=><div key={x} className="rounded-2xl bg-white/10 p-5"><Bot className="mb-3 text-marketCream"/><p className="font-black">{x}</p></div>)}</div></section><AIChatPanel/></div></main> }

@@ -193,3 +193,18 @@ Before going live:
 ## Author
 
 Built for **THE MARKET PLACE** by **poundsmichaels digitals**.
+
+
+## Premium Frontend Redesign
+
+The frontend has been redesigned with a luxury marketplace design system using the brand palette `#013328`, `#CC8B65`, `#D3DCD2`, and `#100C0D`. It includes animated landing sections, responsive product cards, premium authentication pages, AI shopping assistant widget, and buyer/vendor/admin dashboards with charts.
+
+Run:
+
+```bash
+npm install
+npm run dev
+```
+
+Frontend: http://localhost:3000
+Backend: use `NEXT_PUBLIC_API_URL` in `apps/web/.env`.

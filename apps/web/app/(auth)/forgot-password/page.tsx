@@ -1,0 +1,2 @@
+import { AuthShell } from "@/components/auth/auth-shell";
+export default function ForgotPasswordPage(){ return <AuthShell title="Reset your password" subtitle="Enter your email and we will send a secure reset link."><form className="grid gap-4"><input className="premium-input" placeholder="Email address"/><button className="rounded-full bg-marketGreen px-6 py-4 font-black text-white shadow-glow">Send reset link</button></form></AuthShell> }

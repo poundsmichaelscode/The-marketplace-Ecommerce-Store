@@ -1,0 +1,1 @@
+export function MobileDrawer() { return <div className="lg:hidden rounded-2xl bg-white p-4 text-sm font-bold text-marketGreen shadow-soft">Dashboard menu available on desktop. Mobile drawer ready for extension.</div>; }

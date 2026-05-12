@@ -1,7 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root { --background: 0 0% 100%; --foreground: 222 47% 11%; --muted: 210 40% 96%; --muted-foreground: 215 16% 47%; --primary: 142 72% 29%; --primary-foreground: 0 0% 100%; --border: 214 32% 91%; }
-.dark { --background: 222 47% 7%; --foreground: 210 40% 98%; --muted: 217 33% 17%; --muted-foreground: 215 20% 65%; --primary: 142 70% 45%; --primary-foreground: 144 80% 6%; --border: 217 33% 18%; }
-* { border-color: hsl(var(--border)); }
-body { background: hsl(var(--background)); color: hsl(var(--foreground)); }
+
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #100C0D;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(204,139,101,.16), transparent 32%),
+    radial-gradient(circle at 90% 10%, rgba(1,51,40,.13), transparent 30%),
+    #f8f4ef;
+}
+::selection { background: #CC8B65; color: #100C0D; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(1,51,40,.55); border-radius: 999px; }
+::-webkit-scrollbar-track { background: rgba(211,220,210,.45); }
+
+@layer components {
+  .premium-container { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .glass-panel { @apply border border-white/40 bg-white/70 shadow-premium backdrop-blur-2xl; }
+  .dark-glass { @apply border border-white/10 bg-marketDark/75 text-white shadow-premium backdrop-blur-2xl; }
+  .premium-input { @apply w-full rounded-2xl border border-marketGreen/10 bg-white/80 px-4 py-3 text-sm outline-none transition focus:border-marketCream focus:ring-4 focus:ring-marketCream/20; }
+}

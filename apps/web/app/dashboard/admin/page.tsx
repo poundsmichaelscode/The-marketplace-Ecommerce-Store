@@ -1,3 +1,7 @@
-import { DashboardShell } from '@/components/dashboard-shell';
-import { Card } from '@/components/ui/card';
-export default function AdminDashboard(){ const items=['Users','Vendors','Products','Orders','Payments','Disputes','AI Reports','Monitoring']; return <DashboardShell title="Admin Dashboard"><div className="grid gap-4 md:grid-cols-4">{items.map(i=><Card key={i}><b>{i}</b><p className="mt-2 text-2xl font-black">0</p></Card>)}</div></DashboardShell> }
+import { AlertTriangle, BadgeDollarSign, Store, Users } from "lucide-react";
+import { DashboardShell } from "@/components/dashboard/dashboard-shell";
+import { StatCard } from "@/components/dashboard/stat-card";
+import { ChartCard } from "@/components/dashboard/chart-card";
+import { ActivityFeed } from "@/components/dashboard/activity-feed";
+import { RecentOrdersTable } from "@/components/dashboard/recent-orders-table";
+export default function AdminDashboard(){ return <DashboardShell role="admin" title="Platform operations dashboard"><div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4"><StatCard label="Users" value="250k" change="+9%" icon={Users}/><StatCard label="Vendors" value="12k" change="+240" icon={Store}/><StatCard label="Revenue" value="₦92M" change="+22%" icon={BadgeDollarSign}/><StatCard label="Fraud alerts" value="7" change="AI" icon={AlertTriangle}/></div><div className="mt-6 grid gap-6 xl:grid-cols-[1fr_380px]"><ChartCard title="Platform analytics"/><ActivityFeed/></div><div className="mt-6"><RecentOrdersTable/></div></DashboardShell> }
